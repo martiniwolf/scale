@@ -1,6 +1,8 @@
 # encoding: UTF-8
 require_relative '../src/coffee_machine'
+require 'test/unit/assertions'
 
+World(Test::Unit::Assertions)
 
 module Actionwords
   def sut
@@ -44,6 +46,7 @@ module Actionwords
   end
 
   def i_take_coffee_number_coffees(coffee_number = 10)
+    coffee_number = coffee_number.to_i
     while (coffee_number > 0)
       i_take_a_coffee
       coffee_number = coffee_number - 1
