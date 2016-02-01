@@ -3,15 +3,10 @@ Feature: Nominal case
     I can get coffee from the machine
     So I can enjoy the rest of the day
 
-  Scenario Outline: Simple use
-    Given I start the coffee machine "<lang>"
+  Scenario: Simple use
+    Given the coffee machine is started
     When I take a coffee
     Then coffee should be served
-
-    Examples:
-      | lang | ready_message | hiptest-uid |
-      | en | Ready |  |
-      | fr | Pret |  |
 
   Scenario Outline: Messages are based on language
     When I start the coffee machine "<lang>"

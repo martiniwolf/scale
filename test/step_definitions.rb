@@ -3,7 +3,7 @@
 require_relative 'actionwords'
 World(Actionwords)
 
-Given /^I start the coffee machine "(.*)"$/ do |lang|
+When /^I start the coffee machine "(.*)"$/ do |lang|
   i_start_the_coffee_machine(lang)
 end
 
