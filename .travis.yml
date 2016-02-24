@@ -4,10 +4,10 @@ sudo: false
 
 before_install:
  - gem install hiptest-publisher
- - hiptest-publisher -c cucumber.conf --test-run-id=3507 --only=features
+ - "hiptest-publisher -c cucumber.conf --only=features,step_definitions --test-run-id=3507"
 
 script:
- - bundle exec cucumber test -r test/step_definitions.rb --format junit --out results
+ - bundle exec cucumber --format junit --out results
 
 after_script:
   - hiptest-publisher -c cucumber.conf --push="results/*.xml" --test-run-id=3507

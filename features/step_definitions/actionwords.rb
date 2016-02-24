@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require_relative '../src/coffee_machine'
+require_relative '../../src/coffee_machine'
 require 'test/unit/assertions'
 
 World(Test::Unit::Assertions)

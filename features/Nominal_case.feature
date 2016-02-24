@@ -17,7 +17,6 @@ Feature: Nominal case
       | en | Ready |  |
       | fr | Pret |  |
 
-  @plop
   Scenario: No messages are displayed when machine is shut down
     Given the coffee machine is started
     When I shutdown the coffee machine
