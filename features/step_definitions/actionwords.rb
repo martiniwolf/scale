@@ -9,6 +9,10 @@ module Actionwords
     @sut ||= CoffeeMachine.new
   end
 
+  def handled_tanks
+    @handled_tanks ||= []
+  end
+
   def i_start_the_coffee_machine(lang = 'en')
     sut.start(lang)
   end
@@ -18,7 +22,7 @@ module Actionwords
   end
 
   def message_message_should_be_displayed(message)
-    assert_equal(sut.message, message)
+    assert_equal(message, sut.message)
   end
 
   def coffee_should_be_served
@@ -50,6 +54,10 @@ module Actionwords
     while (coffee_number > 0)
       i_take_a_coffee
       coffee_number = coffee_number - 1
+
+      i_fill_the_water_tank if handled_tanks.include?(:water)
+      i_fill_the_beans_tank if handled_tanks.include?(:beans)
+      i_empty_the_coffee_grounds if handled_tanks.include?(:grounds)
     end
   end
 
@@ -57,19 +65,30 @@ module Actionwords
     i_start_the_coffee_machine
   end
 
-  def fifty_coffees_have_been_taken_without_filling_the_tank
-    i_take_coffee_number_coffees(30)
-    i_fill_the_beans_tank
-    i_empty_the_coffee_grounds
-    i_take_coffee_number_coffees(20)
-    i_fill_the_beans_tank
-    i_empty_the_coffee_grounds
+  def i_handle_everything_except_the_water_tank
+    i_handle_coffee_grounds
+    i_handle_beans
   end
 
-  def thirty_eight_coffees_are_taken_without_filling_beans
-    i_take_coffee_number_coffees(37)
-    i_empty_the_coffee_grounds
-    i_fill_the_water_tank
-    i_take_a_coffee
+  def i_handle_water_tank
+    handled_tanks << :water
+  end
+
+  def i_handle_beans
+    handled_tanks << :beans
+  end
+
+  def i_handle_coffee_grounds
+    handled_tanks << :grounds
+  end
+
+  def i_handle_everything_except_the_beans
+    i_handle_water_tank
+    i_handle_coffee_grounds
+  end
+
+  def i_handle_everything_except_the_grounds
+    i_handle_water_tank
+    i_handle_beans
   end
 end

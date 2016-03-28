@@ -27,11 +27,11 @@ When /^I take a coffee$/ do
   i_take_a_coffee
 end
 
-Given /^I empty the coffee grounds$/ do
+When /^I empty the coffee grounds$/ do
   i_empty_the_coffee_grounds
 end
 
-And /^I fill the beans tank$/ do
+When /^I fill the beans tank$/ do
   i_fill_the_beans_tank
 end
 
@@ -39,7 +39,7 @@ When /^I fill the water tank$/ do
   i_fill_the_water_tank
 end
 
-When /^I take "(.*)" coffees$/ do |coffee_number|
+Given /^I take "(.*)" coffees$/ do |coffee_number|
   i_take_coffee_number_coffees(coffee_number)
 end
 
@@ -47,10 +47,26 @@ Given /^the coffee machine is started$/ do
   the_coffee_machine_is_started
 end
 
-When /^fifty coffees have been taken without filling the tank$/ do
-  fifty_coffees_have_been_taken_without_filling_the_tank
+Given /^I handle everything except the water tank$/ do
+  i_handle_everything_except_the_water_tank
 end
 
-When /^thirty eight coffees are taken without filling beans$/ do
-  thirty_eight_coffees_are_taken_without_filling_beans
+Given /^I handle water tank$/ do
+  i_handle_water_tank
+end
+
+Given /^I handle beans$/ do
+  i_handle_beans
+end
+
+Given /^I handle coffee grounds$/ do
+  i_handle_coffee_grounds
+end
+
+Given /^I handle everything except the beans$/ do
+  i_handle_everything_except_the_beans
+end
+
+Given /^I handle everything except the grounds$/ do
+  i_handle_everything_except_the_grounds
 end

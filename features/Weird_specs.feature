@@ -5,13 +5,7 @@ Feature: Weird specs
 
   Scenario: Full grounds does not block coffee
     Given the coffee machine is started
-    When I take "29" coffees
-    Then message "Ready" should be displayed
-    When I take a coffee
-    Then coffee should be served
-    And message "Empty grounds" should be displayed
-    When I fill the water tank
-    And I fill the beans tank
-    And I take "20" coffees
-    Then coffee should be served
-    And message "Empty grounds" should be displayed
+    And I handle everything except the grounds
+    When I take "50" coffees
+    Then message "Empty grounds" should be displayed
+    And coffee should be served

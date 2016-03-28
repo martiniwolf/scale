@@ -1,14 +1,23 @@
 Feature: Water
+    As a coffee lover
+    I have to handle the water tank
+    So I can have coffee when I need it
 
-
-  Scenario: Water runs away
+  Background:
     Given the coffee machine is started
-    When fifty coffees have been taken without filling the tank
+    And I handle everything except the water tank
+
+  Scenario: Message "Fill water tank" is displayed after 50 coffees are taken
+    When I take "50" coffees
     Then message "Fill tank" should be displayed
-    When I take a coffee
+
+  Scenario: It is possible to take 10 coffees after the message "Fill water tank" is displayed
+    Given I take "60" coffees
     Then coffee should be served
-    When I take "10" coffees
+    When I take a coffee
     Then coffee should not be served
-    And message "Fill tank" should be displayed
+
+  Scenario: When the water tank is filled, the message disappears
+    Given I take "55" coffees
     When I fill the water tank
     Then message "Ready" should be displayed
