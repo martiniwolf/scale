@@ -9,6 +9,7 @@ class CoffeeMachine
     fill_beans()
     empty_grounds()
 
+    @time_to_descale = 500
     @coffee_served = false
   end
 
@@ -56,6 +57,7 @@ class CoffeeMachine
       @tank_content -= 1
       @beans_content -= 1
       @grounds_content += 1
+      @time_to_descale -= 1
     end
   end
 
@@ -69,5 +71,14 @@ class CoffeeMachine
 
   def empty_grounds
     @grounds_content = 0
+  end
+
+  def maintenance_light_blinks?
+    return @time_to_descale <= 0
+  end
+
+  def set_water_hardness(hardness)
+    hardness = 'A' unless ['A', 'B', 'C'].includes?(hardness)
+    @time_to_descale = {'A': 500, 'B': 250, 'C': 100}[hardness]
   end
 end
