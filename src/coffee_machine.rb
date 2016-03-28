@@ -78,7 +78,8 @@ class CoffeeMachine
   end
 
   def set_water_hardness(hardness)
-    hardness = 'A' unless ['A', 'B', 'C'].includes?(hardness)
-    @time_to_descale = {'A': 500, 'B': 250, 'C': 100}[hardness]
+    values = {'A' => 500, 'B' => 250, 'C' => 100}
+    hardness = 'A' unless values.keys.include?(hardness)
+    @time_to_descale = values[hardness]
   end
 end
