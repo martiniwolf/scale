@@ -1,9 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    blankslate (3.1.3)
     builder (3.2.2)
-    colorize (0.7.7)
     cucumber (2.1.0)
       builder (>= 2.1.2)
       cucumber-core (~> 1.3.0)
@@ -15,27 +13,9 @@ GEM
       gherkin3 (~> 3.1.0)
     diff-lcs (1.2.5)
     gherkin3 (3.1.2)
-    hiptest-publisher (0.11.0)
-      colorize (~> 0.7, >= 0.7.5)
-      i18n (~> 0.7, >= 0.7.0)
-      multipart-post (~> 2.0, >= 2.0.0)
-      nokogiri (~> 1.6.7)
-      parseconfig (~> 1.0, >= 1.0.4)
-      ruby-handlebars (~> 0.0.2)
-    i18n (0.7.0)
-    mini_portile2 (2.0.0)
     multi_json (1.11.2)
     multi_test (0.1.2)
-    multipart-post (2.0.0)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
-    parseconfig (1.0.8)
-    parslet (1.7.1)
-      blankslate (>= 2.0, <= 4.0)
     power_assert (0.2.3)
-    ruby-handlebars (0.0.3)
-      colorize (~> 0.7, >= 0.7.5)
-      parslet (~> 1.6, >= 1.6.2)
     test-unit (3.1.2)
       power_assert
 
@@ -44,8 +24,10 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber
-  hiptest-publisher
   test-unit
 
+RUBY VERSION
+   ruby 2.2.2p95
+
 BUNDLED WITH
-   1.10.6
+   1.12.5
