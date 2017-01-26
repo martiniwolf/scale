@@ -13,7 +13,7 @@ module Actionwords
     @handled_tanks ||= []
   end
 
-  def i_start_the_coffee_machine(lang = 'en')
+  def i_start_the_coffee_machine_using_language_lang(lang = 'en')
     sut.start(lang)
   end
 
@@ -62,7 +62,7 @@ module Actionwords
   end
 
   def the_coffee_machine_is_started
-    i_start_the_coffee_machine
+    i_start_the_coffee_machine_using_language_lang
   end
 
   def i_handle_everything_except_the_water_tank
@@ -90,5 +90,17 @@ module Actionwords
   def i_handle_everything_except_the_grounds
     i_handle_water_tank
     i_handle_beans
+  end
+
+  def displayed_message_is(__free_text = "")
+    message_message_should_be_displayed(__free_text)
+  end
+
+  def i_switch_to_settings_mode
+    sut.show_settings
+  end
+
+  def settings_should_be(__datatable = "||")
+    assert_equal(sut.get_settings.map {|k, v| [k.to_s, v.to_s]}, __datatable.raw)
   end
 end

@@ -3,8 +3,8 @@
 require_relative 'actionwords'
 World(Actionwords)
 
-When /^I start the coffee machine "(.*)"$/ do |lang|
-  i_start_the_coffee_machine(lang)
+When /^I start the coffee machine using language "(.*)"$/ do |lang|
+  i_start_the_coffee_machine_using_language_lang(lang)
 end
 
 When /^I shutdown the coffee machine$/ do
@@ -69,4 +69,16 @@ end
 
 Given /^I handle everything except the grounds$/ do
   i_handle_everything_except_the_grounds
+end
+
+Then /^displayed message is:$/ do |__free_text|
+  displayed_message_is(__free_text)
+end
+
+When /^I switch to settings mode$/ do
+  i_switch_to_settings_mode
+end
+
+Then /^settings should be:$/ do |__datatable|
+  settings_should_be(__datatable)
 end
