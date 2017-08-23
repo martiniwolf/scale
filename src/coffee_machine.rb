@@ -51,11 +51,11 @@ class CoffeeMachine
   def message
     return '' unless @started
 
-    return messages[:descale] if is_descaling_needed?
     return messages[:settings] if @settings_displayed
     return messages[:tank] if @tank_content <= 10
     return messages[:beans] if @beans_content < 3
     return messages[:grounds] if @grounds_content >= 30
+    return messages[:descale] if is_descaling_needed?
     return messages[:ready]
   end
 
@@ -103,6 +103,6 @@ class CoffeeMachine
   end
 
   def is_descaling_needed?
-    @countdown_to_descale == 0
+    @countdown_to_descale <= 0
   end
 end
