@@ -5,6 +5,7 @@ class CoffeeMachine
     @started = false
 
     # Yes it's a magic machine :)
+    descale()
     fill_tank()
     fill_beans()
     empty_grounds()
@@ -32,14 +33,16 @@ class CoffeeMachine
         beans: 'Fill beans',
         grounds: 'Empty grounds',
         ready: 'Ready',
-        settings: "Settings:\n - 1: water hardness\n - 2: grinder"
+        settings: "Settings:\n - 1: water hardness\n - 2: grinder",
+        descale: "Descaling is needed"
       },
       fr: {
         tank: 'Remplir reservoir',
         beans: 'Ajouter grains',
         grounds: 'Vider marc',
         ready: 'Pret',
-        settings: "Settings:\n - 1: durete de l'eau\n - 2: mouture"
+        settings: "Settings:\n - 1: durete de l'eau\n - 2: mouture",
+        descale: "Detartrage requis"
       }
     }
     return i18n[@lang]
@@ -48,6 +51,7 @@ class CoffeeMachine
   def message
     return '' unless @started
 
+    return messages[:descale] if is_descaling_needed?
     return messages[:settings] if @settings_displayed
     return messages[:tank] if @tank_content <= 10
     return messages[:beans] if @beans_content < 3
@@ -78,6 +82,7 @@ class CoffeeMachine
       @tank_content -= 1
       @beans_content -= 1
       @grounds_content += 1
+      @countdown_to_descale -= 1
     end
   end
 
@@ -91,5 +96,13 @@ class CoffeeMachine
 
   def empty_grounds
     @grounds_content = 0
+  end
+
+  def descale
+    @countdown_to_descale = 500
+  end
+
+  def is_descaling_needed?
+    @countdown_to_descale == 0
   end
 end
