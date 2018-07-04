@@ -7,7 +7,7 @@ before_install:
  - "hiptest-publisher -c cucumber.conf --token=$SECRET_TOKEN --only=features,step_definitions --test-run-id=3507"
 
 script:
- - bundle exec cucumber --format junit --out results
+ - bundle exec cucumber --format json --out results.json
 
 after_script:
-  - hiptest-publisher -c cucumber.conf --token=$SECRET_TOKEN --push="results/*.xml" --test-run-id=3507
+  - hiptest-publisher -c cucumber.conf --token=$SECRET_TOKEN --push=results.json --test-run-id=3507
