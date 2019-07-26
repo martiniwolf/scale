@@ -34,6 +34,10 @@ To build the project and run the tests, use the following command:
 
     bundle exec cucumber --format junit --out results
 
+or to obtain json format
+
+    bundle exec cucumber --format json --out results.json
+
 The SUT implementation can be seen in [``src/coffee_machine.rb``](https://github.com/hiptest/hps-cucumber-ruby/blob/master/src/coffee_machine.rb)
 
 The test report is generated in the ```results/``` folder.
