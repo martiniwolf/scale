@@ -26,6 +26,10 @@ To update the tests:
 
 The tests are generated in the [``features``](https://github.com/hiptest/hps-cucumber-ruby/tree/master/features) directory.
 
+or 
+
+    bundle exec cucumber --format json --out results.json
+
 Run tests
 ---------
 
