@@ -14,6 +14,6 @@ Feature: Support internationalisation
     Then message "<ready_message>" should be displayed
 
     Examples:
-      | language | ready_message | hiptest-uid |
-      | en | Ready |  |
-      | fr | Pret |  |
+      | language | ready_message |
+      | en | Ready |
+      | fr | Pret |
