@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  RAILS_ENV: 'test'
+  RAKE_ENV: 'test'
+  NODE_ENV: 'test'
+
+jobs:
+  cucumber:
+    name: Cucumber tests
+    runs-on: ubuntu-latest
+
+    env:
+      TEST_WITH_POSTGRESQL: 1
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Run Cucumber tests
+      run: |
+        bundle exec cucumber \
+          --format json \
+          --out cucumber-results.json
+
+    - name: Publish Cucumber report in C4J
+      if: always()
+      run: |
+        curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
+        -H "authorization: Bearer ${{ secrets.C4J_TOKEN }}" \
+        -H 'content-type: multipart/form-data' \
+        -F results_file=@cucumber-results.json \
+        -F language=ruby
+      continue-on-error: true
