@@ -43,6 +43,7 @@ jobs:
       if: always()
       run: |
         curl -X POST https://api.adaptavist.io/tm4j/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=true \
-        -F "file=@results.zip" \
-        -H "Authorization: Bearer ${secrets.ZSCALE_TOKEN}"
+        -H "Authorization: Bearer ${{ secrets.ZSCALE_TOKEN }}" \
+        -F "file=@results.zip"
+        
       continue-on-error: true
