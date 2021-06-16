@@ -44,5 +44,5 @@ jobs:
       run: |
         curl -X POST https://api.adaptavist.io/tm4j/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=false \
         -F "file=@results.zip" \
-        -H "Authorization: Bearer ${ZScale_token}"
+        -H "Authorization: Bearer ${secrets.ZSCALE_TOKEN}"
       continue-on-error: true
