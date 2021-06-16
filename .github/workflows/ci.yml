@@ -33,12 +33,16 @@ jobs:
           --format json \
           --out cucumber-results.json
 
-    - name: Publish Cucumber report in C4J
+    - name: Zip results file
       if: always()
       run: |
-        curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
-        -H "authorization: Bearer ${{ secrets.C4J_TOKEN }}" \
-        -H 'content-type: multipart/form-data' \
-        -F results_file=@cucumber-results.json \
-        -F language=ruby
+        zip -r results.zip results.json
+      continue-on-error: true
+
+    - name: Publish Cucumber report in Z4J
+      if: always()
+      run: |
+        curl -X POST https://api.adaptavist.io/tm4j/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=false \
+        -F "file=@results.zip" \
+        -H "Authorization: Bearer ${ZScale_token}"
       continue-on-error: true
