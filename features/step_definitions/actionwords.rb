@@ -26,7 +26,7 @@ module Actionwords
   end
 
   def coffee_should_be_served
-    assert(sut.coffee_served)
+    assert(false)
   end
 
   def coffee_should_not_be_served
