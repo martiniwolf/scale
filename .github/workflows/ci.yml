@@ -36,7 +36,7 @@ jobs:
     - name: Zip results file
       if: always()
       run: |
-        zip -r results.zip results.json
+        zip -r results.zip cucumber-results.json
       continue-on-error: true
 
     - name: Publish Cucumber report in Z4J
