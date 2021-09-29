@@ -42,7 +42,7 @@ jobs:
     - name: Publish Cucumber report in Z4J
       if: always()
       run: |
-        curl -X POST https://api.adaptavist.io/tm4j/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=true \
+        curl -X POST https://api.zephyrscale.smartbear.com/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=true \
         -H "Authorization: Bearer ${{ secrets.ZSCALE_TOKEN }}" \
         -F "file=@results.zip"
         
