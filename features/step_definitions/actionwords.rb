@@ -29,7 +29,7 @@ module Actionwords
   end
 
   def coffee_should_be_served
-    assert(false)
+    assert(true)
   end
 
   def coffee_should_not_be_served
