@@ -22,6 +22,9 @@ module Actionwords
   end
 
   def message_message_should_be_displayed(message)
+    if message === "Ready"
+      assert(false)
+    end
     assert_equal(message, sut.message)
   end
 
