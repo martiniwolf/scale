@@ -39,11 +39,20 @@ jobs:
         zip -r results.zip cucumber-results.json
       continue-on-error: true
 
-    - name: Publish Cucumber report in Z4J
+    - name: Publish Cucumber report in Zephyr Scale Cloud
       if: always()
       run: |
         curl -X POST https://api.zephyrscale.smartbear.com/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=true \
         -H "Authorization: Bearer ${{ secrets.ZSCALE_TOKEN }}" \
+        -F "file=@results.zip"
+        
+      continue-on-error: true
+
+    - name: Publish Cucumber report in Zephyr Scale Server
+      if: always()
+      run: |
+        curl -X POST https://demo-jira.qa.tm4j-server.smartbear.io/automations/executions/cucumber\?projectKey\=DC\&autoCreateTestCases\=true \
+        -H "Authorization: Basic ${{ secrets.ZSCALE_SERVER_TOKEN }}" \
         -F "file=@results.zip"
         
       continue-on-error: true
