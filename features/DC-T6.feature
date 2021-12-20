@@ -1,5 +1,4 @@
 Feature: Serve coffee
-    @TestCaseKey=DC-T6
     Scenario: Serve coffee
         
         Given the coffee machine is started
