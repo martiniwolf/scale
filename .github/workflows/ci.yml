@@ -44,8 +44,8 @@ jobs:
       run: |
         curl -X POST https://api.zephyrscale.smartbear.com/v2/automations/executions/cucumber\?projectKey\=MYC\&autoCreateTestCases\=true \
         -H "Authorization: Bearer ${{ secrets.ZSCALE_TOKEN }}" \
-        -F "file=@results.zip"
-        -F 'testCycle="{\"name\": ${{ env.GITHUB_RUN_ID }}, \"description\": \"automated cycle\"}";type=application/json'
+        -F "file=@results.zip" \
+        -F "testCycle="{\"name\": ${{ env.GITHUB_RUN_ID }}, \"description\": \"automated cycle\"}";type=application/json"
         
       continue-on-error: true
 
