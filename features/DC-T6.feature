@@ -1,4 +1,4 @@
-Feature: Serve coffee
+Feature: Simple use
     Scenario: Serve coffee
         
         Given the coffee machine is started
