@@ -22,14 +22,11 @@ module Actionwords
   end
 
   def message_message_should_be_displayed(message)
-    if message === "Ready"
-      assert(true)
-    end
     assert_equal(message, sut.message)
   end
 
   def coffee_should_be_served
-    assert(true)
+    assert(sut.coffee_served)
   end
 
   def coffee_should_not_be_served
