@@ -8,5 +8,5 @@ Feature: Bad usage
     Given the coffee machine is started
     And I handle everything except the grounds
     When I take "50" coffees
-    Then message "0" should be displayed
+    Then message "empty" should be displayed
     And coffee should be served
