@@ -43,7 +43,7 @@ jobs:
       if: always()
       run: |
         curl -X POST https://api.zephyrscale.smartbear.com/v2/automations/executions/cucumber\?projectKey\=MAR\&autoCreateTestCases\=true \
-        -H 'Authorization: Bearer ${{ secrets.ZSCALETOKEN }}' \
+        -H 'Authorization: Bearer ${{ secrets.zscale23 }}' \
         -F 'file=@results.zip' \
         -F 'testCycle="{\"name\": \"Test Cycle - Github run #${{ github.run_id }}\", \"description\": \"Cycle automated to cover the coffee machine scenario\"}";type=application/json'
         
